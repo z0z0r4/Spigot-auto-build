@@ -37,3 +37,4 @@ jobs:
       - name: Run script
         run: |
           python --version
+          python run.py
