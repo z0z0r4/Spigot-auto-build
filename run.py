@@ -100,6 +100,6 @@ def main():
 
 if __name__ == "__main__":
     # asyncio.run(setup_java(52))
-    print(os.environ)
+#     print(os.environ)
     # get_buildtool()
-#     main()
+    main()
