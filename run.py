@@ -57,4 +57,4 @@ async def setup_java(version: int):
         print(f"Not found {version}")
 
 if __name__ == "__main__":
-    asyncio.run(setup_java(52))
+    print(os.environ["JAVA_HOME"])
