@@ -52,6 +52,7 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "achieved/*.jar"
+          tag: 2023
           token: ${{ secrets.GITHUB_TOKEN }}
           
       - uses: dev-drprasad/delete-older-releases@v0.2.0
