@@ -61,6 +61,7 @@ def main():
         else:
             java_path = os.path.join(os.getenv("JAVA_HOME"), "bin", "java")
         write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --output-dir achieved')
+        write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --compile craftbukkit --output-dir achieved') # build for craftbukkit
 
 if __name__ == "__main__":
     main()
