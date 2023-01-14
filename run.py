@@ -69,6 +69,7 @@ def get_bukit_version():
 def choose_java_version(oldversion: int, newversion: int) -> int:
     for JavaVersion in JavaMajorVersion:
         if JavaVersion <= newversion and JavaVersion >= oldversion:
+            print(JavaMajorVersion[JavaVersion])
             return JavaMajorVersion[JavaVersion]
     else:
         return None
