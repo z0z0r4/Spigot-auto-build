@@ -52,7 +52,7 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "achieved/*.jar"
-          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           
       - uses: dev-drprasad/delete-older-releases@v0.2.0
         with:
