@@ -56,7 +56,10 @@ def main():
     get_buildtool()
     for version in bukkit_version:
         version_info = _get(f"https://hub.spigotmc.org/versions/{version}.json").json()
-        java_path = os.path.join(os.getenv(choose_java_version(version_info["javaVersions"][0], version_info["javaVersions"][1])), "bin", "java")
+        if "javaVersions" in version_info:
+            java_path = os.path.join(os.getenv(choose_java_version(version_info["javaVersions"][0], version_info["javaVersions"][1])), "bin", "java")
+        else:
+            java_path = os.path.join(os.getenv("JAVA_HOME"), "bin", "java")
         write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --output-dir achieved')
 
 if __name__ == "__main__":
