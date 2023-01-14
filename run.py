@@ -54,14 +54,15 @@ def main():
     bukkit_version = get_bukit_version()
     print(f'找到 {bukkit_version}')
     get_buildtool()
-    for version in bukkit_version:
-        version_info = _get(f"https://hub.spigotmc.org/versions/{version}.json").json()
-        if "javaVersions" in version_info:
-            java_path = os.path.join(os.getenv(choose_java_version(version_info["javaVersions"][0], version_info["javaVersions"][1])), "bin", "java")
-        else:
-            java_path = os.path.join(os.getenv("JAVA_HOME"), "bin", "java")
-        write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --output-dir achieved')
-        write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --compile craftbukkit --output-dir achieved') # build for craftbukkit
+    # for version in bukkit_version:
+    version = "1.19.3"
+    version_info = _get(f"https://hub.spigotmc.org/versions/{version}.json").json()
+    if "javaVersions" in version_info:
+        java_path = os.path.join(os.getenv(choose_java_version(version_info["javaVersions"][0], version_info["javaVersions"][1])), "bin", "java")
+    else:
+        java_path = os.path.join(os.getenv("JAVA_HOME"), "bin", "java")
+    write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --output-dir achieved')
+    #write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --compile craftbukkit --output-dir achieved') # build for craftbukkit
 
 if __name__ == "__main__":
     main()
