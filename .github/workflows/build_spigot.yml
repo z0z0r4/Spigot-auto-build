@@ -60,7 +60,7 @@ jobs:
         with:
           # artifacts: "achieved/*.jar"
           artifacts: run.py
-          tag: ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-${{ steps.date.outputs.day }} ${{ steps.date.outputs.hours }}:${{ steps.date.outputs.minutes }}:${{ steps.date.outputs.seconds }}
+          tag: ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-${{ steps.date.outputs.day }}-${{ steps.date.outputs.hours }}-${{ steps.date.outputs.minutes }}-${{ steps.date.outputs.seconds }}
           token: ${{ secrets.GITHUB_TOKEN }}
           
       - uses: dev-drprasad/delete-older-releases@v0.2.0
