@@ -45,4 +45,5 @@ jobs:
         
       - name: Run script
         run: |
+          python run.py
           /usr/bin/sh start.sh
