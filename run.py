@@ -55,6 +55,13 @@ async def setup_java(version: int):
             os.system(f'java/{version}/bin/java -version')
     else:
         print(f"Not found {version}")
-
+        
+def get_buildtool():
+    with open("buildtools.jar", "wb") as f:
+        f.write(_get("https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar").content)
+    print("Get BuildTools.jar")
+    os.system("java -jar buildtools.jar")
+    
 if __name__ == "__main__":
-    print(os.environ["JAVA_HOME"])
+    # print(os.environ["JAVA_HOME"])
+    get_buildtool()
