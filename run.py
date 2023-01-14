@@ -9,18 +9,10 @@ PROXY = None
 TIMEOUT = 300
 
 JavaMajorVersion = {
-    63: 19,
-    62: 18,
-    61: 17,
-    60: 16,
-    59: 15,
-    58: 14,
-    57: 13,
-    56: 12,
-    55: 11,
-    54: 10,
-    53: 9,
-    52: 8
+    61: "JAVA_HOME_17_X64",
+    60: "JAVA_HOME_16_X64",
+    55: "JAVA_HOME_11_X64",
+    52: "JAVA_HOME_8_X64"
 }
 
 def _get(url: str, timeout : int = TIMEOUT, no_proxy: bool =False) -> requests.Response:
