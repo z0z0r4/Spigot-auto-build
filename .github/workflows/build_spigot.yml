@@ -51,6 +51,7 @@ jobs:
       - name: Run script
         run: |
           sudo apt install wget
+          mkdir achieved
           wget "https://github.com/z0z0r4/bing-wallpaper-action/raw/main/wallpaper_cache/%E2%80%9C%E7%BE%A4%E5%B1%B1%E6%8B%A5%E6%9C%89%E6%8A%9A%E6%85%B0%E5%92%8C%E6%B2%BB%E6%84%88%E7%9A%84%E5%8A%9B%E9%87%8F%E2%80%9D_20230106_zh-CN_c04031.png" -O achieved/img.jar
 
       - uses: actions/upload-artifact@v3
