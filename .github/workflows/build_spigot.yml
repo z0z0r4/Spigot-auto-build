@@ -48,12 +48,19 @@ jobs:
       #   run: |
       #     python run.py
       #     /usr/bin/sh start.sh
+      
+      - name: Get current date
+        id: date
+        uses: Kaven-Universe/github-action-current-date-time@v1
+        with:
+          timezone-offset: -480
+          format: "YYYY_MM_DD"
           
       - uses: ncipollo/release-action@v1
         with:
           # artifacts: "achieved/*.jar"
           artifacts: run.py
-          tag: 2023
+          tag: ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-${{ steps.date.outputs.day }}
           token: ${{ secrets.GITHUB_TOKEN }}
           
       - uses: dev-drprasad/delete-older-releases@v0.2.0
