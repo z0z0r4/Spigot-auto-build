@@ -43,7 +43,7 @@ def _get(url: str, timeout : int = TIMEOUT, no_proxy: bool =False) -> requests.R
 async def setup_java(version: int):
     if version in JavaMajorVersion:
         version = JavaMajorVersion[version]
-        info_url = f'https://api.adoptium.net/v3/assets/latest/{JavaMajorVersion[version]}/hotspot?os=linux&architecture=x64&image_type=jdk'
+        info_url = f'https://api.adoptium.net/v3/assets/latest/{version}/hotspot?os=linux&architecture=x64&image_type=jdk'
         java_info = _get(url=info_url).json()
         if len(java_info) > 0:
             java_info = java_info[0]
