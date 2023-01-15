@@ -6,7 +6,7 @@ name: Build Spigot
 on:
   # push:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 */8 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -46,7 +46,7 @@ jobs:
         
       - name: Run script
         run: |
-          python build.py 1.8
+          python build.py
           /usr/bin/sh start.sh
       
       - name: Get current date
