@@ -56,6 +56,7 @@ def init_version(version: str):
         java_path = os.path.join(os.getenv(choose_java_version(version_info["javaVersions"][0], version_info["javaVersions"][1])), "bin", "java")
     else:
         java_path = os.path.join(os.getenv("JAVA_HOME"), "bin", "java")
+    print(version, java_path)
     write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --output-dir achieved')
 #     write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --compile craftbukkit --output-dir achieved') # build for craftbukkit
 
