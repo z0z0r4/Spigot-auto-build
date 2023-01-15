@@ -63,7 +63,7 @@ def init_version(version: str):
 def main():
     get_buildtool()
     if len(sys.argv) >= 2:
-        print(f'找到 {bukkit_version[1:]}')
+        print(f'找到 {sys.argv[1:]}')
         for version in sys.argv[1:]:
             init_version(version)
     else:
