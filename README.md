@@ -1,1 +1,1 @@
-# MinecraftActions
+# Spigot-Auto-Build-Actions

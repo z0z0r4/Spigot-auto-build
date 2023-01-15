@@ -2,6 +2,7 @@ import requests
 import traceback
 import os
 import re
+import sys
 
 TIMEOUT = 300
 
@@ -49,19 +50,27 @@ def write_command_start_sh(command: str):
         f.write(f'{command}\n')
         f.write(f"echo '{command} Completed'\n")
 
+def init_version(version: str):
+    version_info = _get(f"https://hub.spigotmc.org/versions/{version}.json").json()
+    if "javaVersions" in version_info:
+        java_path = os.path.join(os.getenv(choose_java_version(version_info["javaVersions"][0], version_info["javaVersions"][1])), "bin", "java")
+    else:
+        java_path = os.path.join(os.getenv("JAVA_HOME_8_X64"), "bin", "java")
+    write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --output-dir achieved')
+#     write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --compile craftbukkit --output-dir achieved') # build for craftbukkit
+
+        
 def main():
     get_buildtool()
-    bukkit_version = get_bukit_version()
-    print(f'找到 {bukkit_version}')
-    get_buildtool()
-    for version in bukkit_version:
-        version_info = _get(f"https://hub.spigotmc.org/versions/{version}.json").json()
-        if "javaVersions" in version_info:
-            java_path = os.path.join(os.getenv(choose_java_version(version_info["javaVersions"][0], version_info["javaVersions"][1])), "bin", "java")
-        else:
-            java_path = os.path.join(os.getenv("JAVA_HOME"), "bin", "java")
-        write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --output-dir achieved')
-        write_command_start_sh(f'{java_path} -jar buildtools.jar --rev {version} --compile craftbukkit --output-dir achieved') # build for craftbukkit
-
+    if len(sys.argv) >= 2:
+        print(f'找到 {sys.argv[1:]}')
+        for version in sys.argv[1:]:
+            init_version(version)
+    else:
+        bukkit_version = get_bukit_version()
+        print(f'找到 {bukkit_version}')
+        for version in bukkit_version:
+            init_version(version)
+            
 if __name__ == "__main__":
     main()
