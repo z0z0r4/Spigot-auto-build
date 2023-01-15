@@ -58,7 +58,7 @@ jobs:
           
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "achieved/*.jar"
+          artifacts: "achieved/***.jar"
           tag: ${{ steps.date.outputs.year }}-${{ steps.date.outputs.month }}-${{ steps.date.outputs.day }}-${{ steps.date.outputs.hours }}-${{ steps.date.outputs.minutes }}-${{ steps.date.outputs.seconds }}
           token: ${{ secrets.GITHUB_TOKEN }}
           
